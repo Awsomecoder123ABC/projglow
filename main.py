@@ -567,5 +567,21 @@ Error Treaceback: ```py\n{exception}```""",
     )  # Doing this so even when slash commands are implemented, the error handler still works just fine.
     print(exception)
 
+    
+@client.command()
+async def coinflip(ctx):
+    choices = ["Heads", "Tails"]
+    rancoin = random.choice(choices)
+    embed = nextcord.Embed(title='You flipped a coin!',
+                          description=f'It was {rancoin}.',
+                          color=0x0000ff)
+    if rancoin == 'Heads':
+        urlrc = 'https://i.imgur.com/jTGm7MF.png'
+    elif rancoin == 'Tails':
+        urlrc = 'https://i.imgur.com/b4HhTJh.jpg'
+    embed.set_thumbnail(url=urlrc)
+    await ctx.send(embed=embed)
+    
+
 
 client.run(TOKEN)
